@@ -40,7 +40,7 @@ export default function Categories() {
           </h2>
           <Link
             href="#"
-            className="hidden text-sm font-medium text-accent hover:text-accent/80 sm:block"
+            className="hidden text-sm font-medium text-primary hover:text-accent/80 sm:block"
           >
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
@@ -49,7 +49,10 @@ export default function Categories() {
 
         <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-5">
           {categories.map((category) => (
-            <Card key={category.name} className="group overflow-hidden bg-primary">
+            <Card
+              key={category.name}
+              className="group overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300"
+            >
               <Link href={category.href} className="relative block h-48">
                 <Image
                   src={category.imageSrc}
@@ -58,9 +61,9 @@ export default function Categories() {
                   objectFit="cover"
                   className="transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                <CardContent className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-lg font-semibold text-primary-foreground">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
+                <CardContent className="absolute bottom-0 left-0 right-0 p-2">
+                  <h3 className="text-lg font-semibold text-white text-center">
                     {category.name}
                   </h3>
                 </CardContent>
@@ -72,7 +75,7 @@ export default function Categories() {
         <div className="mt-6 text-center sm:hidden">
           <Link
             href="#"
-            className="text-sm font-medium text-accent hover:text-accent/80"
+            className="text-sm font-medium text-primary hover:text-accent/80"
           >
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>

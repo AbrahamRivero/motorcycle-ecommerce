@@ -155,7 +155,7 @@ const TrendingProducts = () => {
           </h2>
           <Link
             href="#"
-            className="hidden text-sm font-medium text-accent hover:text-accent/80 md:block"
+            className="hidden text-sm font-medium text-primary hover:text-accent/80 md:block"
           >
             Shop the collection
             <span aria-hidden="true"> &rarr;</span>
@@ -169,19 +169,28 @@ const TrendingProducts = () => {
                 <img
                   alt={product.name}
                   src={product.image}
-                  className="aspect-h-3 aspect-w-4 object-cover object-center"
+                  className="aspect-h-3 aspect-w-4 object-cover object-center group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="mt-4 flex items-center justify-between space-x-8 text-base font-medium">
                 <h3>
-                  <a href="#" className="text-slate-100">
+                  <a href="#" className="text-foreground hover:text-primary">
                     <span aria-hidden="true" className="absolute inset-0" />
                     {product.name}
                   </a>
                 </h3>
-                <p className="text-slate-300">{`$${product.price}`}</p>
+                <p className="text-primary/70 font-semibold">${product.price}</p>
               </div>
-              <p className="mt-1 text-sm text-slate-200">{product.category}</p>
+              <p className="mt-1 text-sm text-muted">{product.category}</p>
+              <div className="mt-2">
+                <Badge
+                  variant="secondary"
+                  className="bg-secondary/10 text-secondary"
+                >
+                  ★ {product.rating} ({product.votes} reviews)
+                </Badge>
+              </div>
             </div>
           ))}
         </div>
@@ -189,7 +198,7 @@ const TrendingProducts = () => {
         <div className="mt-8 text-sm md:hidden">
           <Link
             href="#"
-            className="font-medium text-accent hover:text-accent/80"
+            className="font-medium text-primary hover:text-accent/80"
           >
             Shop the collection
             <span aria-hidden="true"> &rarr;</span>

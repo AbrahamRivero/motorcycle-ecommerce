@@ -32,7 +32,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full bg-primary">
+    <header className="w-full bg-primary sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo (hidden on mobile) */}
@@ -42,13 +42,13 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Mobile Sidebar Trigger (replaces logo on mobile) */}
+          {/* Mobile Sidebar Trigger */}
           <Sheet>
             <SheetTrigger asChild>
               <Button
                 size="icon"
                 variant="ghost"
-                className="lg:hidden text-primary-foreground"
+                className="lg:hidden text-primary-foreground hover:text-accent transition-colors"
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open mobile menu</span>
@@ -58,7 +58,7 @@ export default function Header() {
               side="left"
               className="w-[300px] sm:w-[400px] bg-primary border-none"
             >
-              <SheetHeader>
+              <SheetHeader className="text-left">
                 <SheetTitle className="text-primary-foreground">
                   <span className="text-2xl font-bold">
                     B<span className="text-accent">i</span>ke
@@ -96,8 +96,8 @@ export default function Header() {
           <div className="flex flex-1 max-w-md mx-4">
             <div className="relative w-full">
               <Input
-                className="w-full bg-primary-foreground/10 border-primary-foreground/20 pl-10 pr-4 py-2 text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:ring-2 focus-visible:ring-accent"
-                placeholder="Search"
+                className="w-full bg-primary-foreground/10 border-primary-foreground/20 pl-10 pr-4 py-2 text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:ring-2 focus-visible:ring-accent transition-all"
+                placeholder="Search for products..."
                 type="search"
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-primary-foreground/50" />
@@ -110,7 +110,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-primary-foreground hover:text-accent transition-colors"
+                className="text-primary-foreground hover:text-accent transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -120,18 +120,32 @@ export default function Header() {
           {/* Desktop Icons */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-primary-foreground hover:text-accent transition-colors relative"
+              >
                 <ShoppingBag className="h-6 w-6" />
+                <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
                 <span className="sr-only">Shopping Cart</span>
               </Button>
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-primary-foreground hover:text-accent transition-colors relative"
+              >
                 <Heart className="h-6 w-6" />
+                <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
                 <span className="sr-only">Favorites</span>
               </Button>
             </div>
 
-            {/* User Button (visible on all screens) */}
-            <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent">
+            {/* User Button */}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-primary-foreground hover:text-accent transition-colors"
+            >
               <User className="h-6 w-6" />
               <span className="sr-only">Account</span>
             </Button>

@@ -11,15 +11,15 @@ const MobileNavLinks = () => {
     <>
       <Link href="/" className="flex-shrink-0">
         <span className="text-2xl font-bold text-white">
-          B<span className="text-[#C2290A]">i</span>ke
+          B<span className="text-accent">i</span>ke
         </span>
       </Link>
       <Link
         href="/dashboard"
         className={cn(
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground",
+          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-accent transition-colors",
           {
-            "bg-muted text-foreground": pathname === "/dashboard",
+            "bg-primary/10 text-accent": pathname === "/dashboard",
           }
         )}
       >
@@ -29,50 +29,50 @@ const MobileNavLinks = () => {
       <Link
         href="/dashboard/orders"
         className={cn(
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground",
+          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-accent transition-colors",
           {
-            "bg-muted text-foreground": pathname === "/dashboard/orders",
+            "bg-primary/10 text-accent": pathname === "/dashboard/orders",
           }
         )}
       >
         <ShoppingCart className="h-5 w-5" />
-        Pedidos
+        Orders
       </Link>
       <Link
         href="/dashboard/products"
         className={cn(
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground",
+          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-accent transition-colors",
           {
-            "bg-muted text-foreground": pathname === "/dashboard/products",
+            "bg-primary/10 text-accent": pathname === "/dashboard/products",
           }
         )}
       >
         <Package className="h-5 w-5" />
-        Productos
+        Products
       </Link>
       <Link
         href="/dashboard/customers"
         className={cn(
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground",
+          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-accent transition-colors",
           {
-            "bg-muted text-foreground": pathname === "/dashboard/customers",
+            "bg-primary/10 text-accent": pathname === "/dashboard/customers",
           }
         )}
       >
         <Users className="h-5 w-5" />
-        Clientes
+        Customers
       </Link>
       <Link
         href="/dashboard/events"
         className={cn(
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground",
+          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-accent transition-colors",
           {
-            "bg-muted text-foreground": pathname === "/dashboard/events",
+            "bg-primary/10 text-accent": pathname === "/dashboard/events",
           }
         )}
       >
         <Tickets className="h-5 w-5" />
-        Eventos
+        Events
       </Link>
     </>
   );

@@ -14,44 +14,44 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "#6B728E",
-        input: "#6B728E",
-        ring: "#3C7EFC",
-        background: "#2A2D3E",
-        foreground: "#F4F4F4",
+        border: "#E2E8F0",
+        input: "#CBD5E1",
+        ring: "#9333EA",
+        background: "#FFFFFF",
+        foreground: "#1E293B",
         primary: {
-          DEFAULT: "#3F4E6A",
-          foreground: "#F4F4F4",
+          DEFAULT: "#18181B", // Rich black - luxury and sophistication
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#4C9AFF",
-          foreground: "#F4F4F4",
+          DEFAULT: "#9333EA", // Royal purple - luxury and premium quality
+          foreground: "#FFFFFF",
         },
         destructive: {
-          DEFAULT: "#FF5370",
-          foreground: "#F4F4F4",
+          DEFAULT: "#EF4444",
+          foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "#5C6B89",
-          foreground: "#F4F4F4",
+          DEFAULT: "#64748B",
+          foreground: "#F8FAFC",
         },
         accent: {
-          DEFAULT: "#82AAFF",
-          foreground: "#F4F4F4",
+          DEFAULT: "#D946EF", // Vibrant purple - energy and excitement
+          foreground: "#FFFFFF",
         },
         popover: {
-          DEFAULT: "#2A2D3E",
-          foreground: "#F4F4F4",
+          DEFAULT: "#FFFFFF",
+          foreground: "#1E293B",
         },
         card: {
-          DEFAULT: "#3F4E6A",
-          foreground: "#F4F4F4",
+          DEFAULT: "#F8FAFC",
+          foreground: "#1E293B",
         },
         categories: {
-          DEFAULT: "#2F3447",
+          DEFAULT: "#F1F5F9",
         },
         trending: {
-          DEFAULT: "#323750",
+          DEFAULT: "#F8FAFC",
         },
       },
       borderRadius: {

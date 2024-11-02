@@ -86,30 +86,30 @@ const Footer = () => {
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="flex-shrink-0">
               <span className="text-2xl font-bold">
-                B<span className="text-secondary">i</span>ke
+                B<span className="text-accent">i</span>ke
               </span>
             </Link>
             <div className="flex flex-col space-y-4">
               <div className="flex items-center">
-                <MapPinIcon className="h-5 w-5 mr-2 text-secondary" />
+                <MapPinIcon className="h-5 w-5 mr-2 text-accent" />
                 <span className="text-sm">
                   23 Relevation Street, Paris, France
                 </span>
               </div>
               <div className="flex items-center">
-                <PhoneIcon className="h-5 w-5 mr-2 text-secondary" />
+                <PhoneIcon className="h-5 w-5 mr-2 text-accent" />
                 <a
                   href="tel:+5358113443"
-                  className="text-sm hover:text-secondary"
+                  className="text-sm hover:text-accent transition-colors"
                 >
                   +5358113443
                 </a>
               </div>
               <div className="flex items-center">
-                <MailIcon className="h-5 w-5 mr-2 text-secondary" />
+                <MailIcon className="h-5 w-5 mr-2 text-accent" />
                 <a
                   href="mailto:support@bike.com"
-                  className="text-sm hover:text-secondary"
+                  className="text-sm hover:text-accent transition-colors"
                 >
                   support@bike.com
                 </a>
@@ -119,7 +119,7 @@ const Footer = () => {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-accent">
                   Solutions
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
@@ -127,7 +127,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm hover:text-secondary"
+                        className="text-sm hover:text-accent transition-colors"
                       >
                         {item.name}
                       </a>
@@ -136,7 +136,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold uppercase tracking-wider">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-accent">
                   Support
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
@@ -144,7 +144,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm hover:text-secondary"
+                        className="text-sm hover:text-accent transition-colors"
                       >
                         {item.name}
                       </a>
@@ -155,7 +155,7 @@ const Footer = () => {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-accent">
                   Company
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
@@ -163,7 +163,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm hover:text-secondary"
+                        className="text-sm hover:text-accent transition-colors"
                       >
                         {item.name}
                       </a>
@@ -172,7 +172,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold uppercase tracking-wider">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-accent">
                   Legal
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
@@ -180,7 +180,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm hover:text-secondary"
+                        className="text-sm hover:text-accent transition-colors"
                       >
                         {item.name}
                       </a>
@@ -201,7 +201,7 @@ const Footer = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-primary-foreground hover:text-secondary"
+                  className="text-primary-foreground hover:text-accent transition-colors"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
