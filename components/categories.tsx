@@ -32,15 +32,15 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-16 sm:py-24 bg-categories">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <h2 className="text-2xl font-bold tracking-tight text-primary-foreground">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">
             Shop by Category
           </h2>
           <Link
             href="#"
-            className="hidden text-sm font-medium text-secondary hover:text-secondary/80 sm:block"
+            className="hidden text-sm font-medium text-accent hover:text-accent/80 sm:block"
           >
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
@@ -49,7 +49,7 @@ export default function Categories() {
 
         <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-5">
           {categories.map((category) => (
-            <Card key={category.name} className="group overflow-hidden">
+            <Card key={category.name} className="group overflow-hidden bg-primary">
               <Link href={category.href} className="relative block h-48">
                 <Image
                   src={category.imageSrc}
@@ -58,8 +58,8 @@ export default function Categories() {
                   objectFit="cover"
                   className="transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <CardContent className="absolute bottom-0 left-0 right-0 p-2 text-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                <CardContent className="absolute bottom-0 left-0 right-0 p-4">
                   <h3 className="text-lg font-semibold text-primary-foreground">
                     {category.name}
                   </h3>
@@ -72,7 +72,7 @@ export default function Categories() {
         <div className="mt-6 text-center sm:hidden">
           <Link
             href="#"
-            className="text-sm font-medium text-secondary hover:text-secondary/80"
+            className="text-sm font-medium text-accent hover:text-accent/80"
           >
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>

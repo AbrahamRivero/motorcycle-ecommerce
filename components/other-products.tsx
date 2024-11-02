@@ -2,8 +2,8 @@ import React from "react";
 
 const ShopGearProducts = () => {
   return (
-    <section>
-      <div className="mx-auto container px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:pt-32">
+    <section aria-labelledby="shop-gear-accessories-heading" className="bg-background">
+      <div className="mx-auto container px-4 pt-0 pb-16 sm:px-6 sm:py-24 lg:px-8 lg:pt-32">
         <div className="md:flex md:items-center md:justify-between mb-2">
           <h2
             id="favorites-heading"

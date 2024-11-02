@@ -31,13 +31,13 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-24  sm:py-32 bg-secondary/10">
+    <section className="py-24 sm:py-32 bg-categories">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Our Features & Facilities
           </h2>
-          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">
+          <p className="mt-6 text-lg leading-8 text-foreground/80">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
             Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
             In mi viverra elit nunc.
@@ -47,7 +47,7 @@ export default function Features() {
           {features.map((feature) => (
             <Card key={feature.name} className="bg-primary text-primary-foreground">
               <CardHeader>
-                <feature.icon className="h-8 w-8 text-secondary" aria-hidden="true" />
+                <feature.icon className="h-8 w-8 text-accent" aria-hidden="true" />
                 <CardTitle className="mt-4">{feature.name}</CardTitle>
               </CardHeader>
               <CardContent>

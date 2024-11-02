@@ -32,13 +32,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full bg-[#111212]">
+    <header className="w-full bg-primary">
       <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between gap-4">
+        <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo (hidden on mobile) */}
           <Link href="/" className="flex-shrink-0 hidden lg:block">
-            <span className="text-2xl font-bold text-white">
-              B<span className="text-[#C2290A]">i</span>ke
+            <span className="text-2xl font-bold text-primary-foreground">
+              B<span className="text-accent">i</span>ke
             </span>
           </Link>
 
@@ -47,7 +47,8 @@ export default function Header() {
             <SheetTrigger asChild>
               <Button
                 size="icon"
-                className="lg:hidden text-white hover:bg-transparent focus:bg-transparent"
+                variant="ghost"
+                className="lg:hidden text-primary-foreground"
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open mobile menu</span>
@@ -55,36 +56,35 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent
               side="left"
-              className="w-[300px] sm:w-[400px] bg-[#111212] border-none"
+              className="w-[300px] sm:w-[400px] bg-primary border-none"
             >
-              <SheetTitle>
-                {/* Logo in sidebar */}
-                <div className="mb-8 mt-4">
-                  <span className="text-2xl font-bold text-white">
-                    B<span className="text-[#C2290A]">i</span>ke
+              <SheetHeader>
+                <SheetTitle className="text-primary-foreground">
+                  <span className="text-2xl font-bold">
+                    B<span className="text-accent">i</span>ke
                   </span>
-                </div>
-              </SheetTitle>
+                </SheetTitle>
+              </SheetHeader>
 
-              <nav className="flex flex-col gap-6">
+              <nav className="flex flex-col gap-6 mt-8">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center text-white hover:text-gray-300 transition-colors text-lg"
+                    className="flex items-center text-primary-foreground hover:text-accent transition-colors text-lg"
                   >
                     <link.icon className="h-5 w-5 mr-4" />
                     <span>{link.label}</span>
                   </Link>
                 ))}
               </nav>
-              <Separator className="my-6" />
+              <Separator className="my-6 bg-primary-foreground/20" />
               <div className="flex flex-col gap-6">
-                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                <button className="flex items-center text-primary-foreground hover:text-accent transition-colors">
                   <ShoppingCart className="h-5 w-5 mr-4" />
                   <span>Shopping Cart</span>
                 </button>
-                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                <button className="flex items-center text-primary-foreground hover:text-accent transition-colors">
                   <Heart className="h-5 w-5 mr-4" />
                   <span>Favorites</span>
                 </button>
@@ -96,11 +96,11 @@ export default function Header() {
           <div className="flex flex-1 max-w-md mx-4">
             <div className="relative w-full">
               <Input
-                className="w-full bg-[#2A2A2A] border-0 pl-10 pr-4 py-2 text-white placeholder:text-gray-400 focus-visible:ring-0"
+                className="w-full bg-primary-foreground/10 border-primary-foreground/20 pl-10 pr-4 py-2 text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:ring-2 focus-visible:ring-accent"
                 placeholder="Search"
                 type="search"
               />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-primary-foreground/50" />
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-primary-foreground hover:text-accent transition-colors"
               >
                 {link.label}
               </Link>
@@ -120,21 +120,21 @@ export default function Header() {
           {/* Desktop Icons */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
-              <button className="text-white hover:text-gray-300 transition-colors">
+              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent">
                 <ShoppingBag className="h-6 w-6" />
                 <span className="sr-only">Shopping Cart</span>
-              </button>
-              <button className="text-white hover:text-gray-300 transition-colors">
+              </Button>
+              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent">
                 <Heart className="h-6 w-6" />
                 <span className="sr-only">Favorites</span>
-              </button>
+              </Button>
             </div>
 
             {/* User Button (visible on all screens) */}
-            <button className="text-white hover:text-gray-300 transition-colors">
+            <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent">
               <User className="h-6 w-6" />
               <span className="sr-only">Account</span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
