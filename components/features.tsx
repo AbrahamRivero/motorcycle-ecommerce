@@ -4,6 +4,7 @@ import {
   SmartphoneCharging,
   MapPinned,
 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const features = [
   {
@@ -30,47 +31,32 @@ const features = [
 
 export default function Features() {
   return (
-    <div className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <p className="mt-2 text-pretty text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-balance">
+    <section className="py-24  sm:py-32 bg-secondary/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
             Our Features & Facilities
-          </p>
-          <p className="mt-6 text-lg/8 text-slate-300">
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
             Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
             In mi viverra elit nunc.
           </p>
         </div>
-        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-0">
-            {features.map((feature) => (
-              <div
-                key={feature.name}
-                className="flex flex-col items-start sm:items-center"
-              >
-                <div className="md:flex-shrink-0">
-                  <div className="flow-root">
-                    <feature.icon
-                      aria-hidden="true"
-                      className="h-12 w-12 text-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6 text-left sm:text-center">
-                  <h3 className="text-base font-medium text-slate-100">
-                    {feature.name}
-                  </h3>
-                  <p className="mt-3 text-sm text-slate-300">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => (
+            <Card key={feature.name} className="bg-primary text-primary-foreground">
+              <CardHeader>
+                <feature.icon className="h-8 w-8 text-secondary" aria-hidden="true" />
+                <CardTitle className="mt-4">{feature.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-primary-foreground/80">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
