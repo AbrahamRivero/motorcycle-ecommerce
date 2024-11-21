@@ -1,31 +1,32 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import { CategoryCard } from "./category-card";
 
 const categories = [
   {
     name: "Motorcycles",
-    href: "#",
+    slug: "motorcycles",
     imageSrc: "/268964158acf429229dc46f7c3980801.webp",
   },
   {
     name: "Riding Gear",
-    href: "#",
+    slug: "riding-gear",
     imageSrc: "/dhehaivan-hEK_nqe760k-unsplash.jpg",
   },
   {
     name: "Parts and Accessories",
-    href: "#",
+    slug: "parts-accessories",
     imageSrc: "/photo-1652191337993-e4bcdd3bbc08.avif",
   },
   {
     name: "Electronics and Gadgets",
-    href: "#",
+    slug: "electronics-gadgets",
     imageSrc: "/81kvSfIg1DL._AC_SX679_.jpg",
   },
   {
     name: "Custom Parts",
-    href: "#",
+    slug: "custom-parts",
     imageSrc: "/61IcMd4A+5L._AC_SY300_SX300_.jpg",
   },
 ];
@@ -48,27 +49,8 @@ export default function Categories() {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-5">
-          {categories.map((category) => (
-            <Card
-              key={category.name}
-              className="group overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300"
-            >
-              <Link href={category.href} className="relative block h-48">
-                <Image
-                  src={category.imageSrc}
-                  alt={category.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
-                <CardContent className="absolute bottom-0 left-0 right-0 p-2">
-                  <h3 className="text-lg font-semibold text-white text-center">
-                    {category.name}
-                  </h3>
-                </CardContent>
-              </Link>
-            </Card>
+          {categories.map(({ name, imageSrc, slug }) => (
+            <CategoryCard key={name} name={name} slug={slug} image={imageSrc} />
           ))}
         </div>
 
