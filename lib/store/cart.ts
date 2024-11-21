@@ -1,48 +1,73 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface CartItem {
+export interface CartItemInterface {
   id: number;
+  imageAlt: string;
+  imageSrc: string;
   name: string;
+  href: string;
   price: number;
+  color?: string;
   quantity: number;
 }
 
 interface CartStore {
-  items: CartItem[];
-  addItem: (item: CartItem) => void;
+  items: CartItemInterface[];
+  updateQuantity: (id: number, newQuantity: number) => void;
   removeItem: (id: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
+  getTotalItems: () => number;
+  getTotalPrice: () => number;
 }
 
 export const useCartStore = create<CartStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       items: [],
-      addItem: (item) =>
+      updateQuantity: (id, newQuantity) =>
         set((state) => {
-          const existingItem = state.items.find((i) => i.id === item.id);
-          if (existingItem) {
+          const existingItemIndex = state.items.findIndex((i) => i.id === id);
+          if (existingItemIndex !== -1) {
+            if (newQuantity <= 0) {
+              // Remove item if quantity is 0 or less
+              return {
+                items: state.items.filter(
+                  (_, index) => index !== existingItemIndex
+                ),
+              };
+            } else {
+              // Update quantity
+              const updatedItems = [...state.items];
+              updatedItems[existingItemIndex] = {
+                ...updatedItems[existingItemIndex],
+                quantity: newQuantity,
+              };
+              return { items: updatedItems };
+            }
+          } else if (newQuantity > 0) {
+            // Add new item if it doesn't exist and quantity is positive
             return {
-              items: state.items.map((i) =>
-                i.id === item.id
-                  ? { ...i, quantity: i.quantity + item.quantity }
-                  : i
-              ),
+              items: [
+                ...state.items,
+                { id, quantity: newQuantity } as CartItemInterface,
+              ],
             };
           }
-          return { items: [...state.items, item] };
+          return state; // No changes if item doesn't exist and quantity is 0 or less
         }),
       removeItem: (id) =>
         set((state) => ({
           items: state.items.filter((i) => i.id !== id),
         })),
-      updateQuantity: (id, quantity) =>
-        set((state) => ({
-          items: state.items.map((i) => (i.id === id ? { ...i, quantity } : i)),
-        })),
       clearCart: () => set({ items: [] }),
+      getTotalItems: () =>
+        get().items.reduce((total, item) => total + item.quantity, 0),
+      getTotalPrice: () =>
+        get().items.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0
+        ),
     }),
     {
       name: "cart-storage",

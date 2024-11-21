@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Search,
   ShoppingBag,
@@ -11,7 +13,6 @@ import {
   BookOpen,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -20,7 +21,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useState } from "react";
 import { Separator } from "./ui/separator";
+import { useCartStore } from "@/lib/store/cart";
+import Link from "next/link";
+import CartSheet from "./cart-sheet";
 
 export default function Header() {
   const navLinks = [
@@ -30,6 +35,14 @@ export default function Header() {
     { href: "/contact", label: "Contact", icon: Phone },
     { href: "/blog", label: "Blog", icon: BookOpen },
   ];
+
+  const { getTotalItems } = useCartStore();
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const onCloseCartHandler = () => {
+    setIsCartOpen(false);
+  };
 
   return (
     <header className="w-full bg-primary sticky top-0 z-50 shadow-lg">
@@ -80,10 +93,20 @@ export default function Header() {
               </nav>
               <Separator className="my-6 bg-primary-foreground/20" />
               <div className="flex flex-col gap-6">
-                <button className="flex items-center text-primary-foreground hover:text-accent transition-colors">
-                  <ShoppingCart className="h-5 w-5 mr-4" />
-                  <span>Shopping Cart</span>
-                </button>
+                <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
+                  <SheetTrigger asChild>
+                    <button className="flex items-center text-primary-foreground hover:text-accent transition-colors">
+                      <ShoppingCart className="h-5 w-5 mr-4" />
+                      <span>Carrito</span>
+                    </button>
+                  </SheetTrigger>
+                  <SheetContent
+                    side="right"
+                    className="w-[300px] sm:w-1/4 bg-primary border-none"
+                  >
+                    <CartSheet onClose={onCloseCartHandler} />
+                  </SheetContent>
+                </Sheet>
                 <button className="flex items-center text-primary-foreground hover:text-accent transition-colors">
                   <Heart className="h-5 w-5 mr-4" />
                   <span>Favorites</span>
@@ -120,30 +143,47 @@ export default function Header() {
           {/* Desktop Icons */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="text-primary-foreground hover:text-accent transition-colors relative"
-              >
-                <ShoppingBag className="h-6 w-6" />
-                <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
-                <span className="sr-only">Shopping Cart</span>
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-primary-foreground hover:text-accent transition-colors relative"
+                  >
+                    <ShoppingBag className="h-6 w-6" />
+                    {getTotalItems() > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        {getTotalItems()}
+                      </span>
+                    )}
+                    <span className="sr-only">Shopping Cart</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  className="w-[300px] sm:w-1/4 bg-primary border-none"
+                >
+                  <CartSheet onClose={onCloseCartHandler} />
+                </SheetContent>
+              </Sheet>
+
+              <Button
+                variant="ghost"
+                size="icon"
                 className="text-primary-foreground hover:text-accent transition-colors relative"
               >
                 <Heart className="h-6 w-6" />
-                <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  2
+                </span>
                 <span className="sr-only">Favorites</span>
               </Button>
             </div>
 
             {/* User Button */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="text-primary-foreground hover:text-accent transition-colors"
             >
               <User className="h-6 w-6" />
