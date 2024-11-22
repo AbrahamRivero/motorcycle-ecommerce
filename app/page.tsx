@@ -1,5 +1,4 @@
 import Banner from "@/components/banner";
-import Footer from "@/components/footer";
 import Features from "@/components/features";
 import TrendingProducts from "@/components/trending-products";
 import Categories from "@/components/categories";
@@ -23,9 +22,6 @@ export default function HomePage() {
 
       {/* Features Section */}
       <Features />
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

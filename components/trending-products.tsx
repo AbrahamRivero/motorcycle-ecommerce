@@ -188,7 +188,7 @@ const TrendingProducts = () => {
 
         <div className="mt-8 text-sm md:hidden">
           <Link
-            href="#"
+            href="/products"
             className="font-medium text-primary hover:text-accent/80"
           >
             Shop the collection
