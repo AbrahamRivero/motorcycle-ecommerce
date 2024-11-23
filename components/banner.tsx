@@ -1,6 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export default function Banner() {
+  const t = useTranslations("HomePage.Banner");
   return (
     <div className="bg-background">
       <div className="relative isolate overflow-hidden pt-14">
@@ -34,19 +37,27 @@ export default function Banner() {
             </div>
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-                The motorcycle <br />
-                Revolution
+                {t("title")}
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-300">
-                Experience the thrill of the open road with our premium selection of motorcycles and gear.
+                {t("subtitle")}
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-semibold">
-                  Shop Now
+                <Button
+                  size="lg"
+                  className="bg-accent hover:bg-accent/90 text-white font-semibold"
+                >
+                  {t("ctaButtom1")}
                 </Button>
-                <Button variant="link" className="text-white hover:text-accent">
-                  Explore Products <span aria-hidden="true">→</span>
-                </Button>
+                <Link
+                  href="/products"
+                  className={buttonVariants({
+                    variant: "link",
+                    className: "text-white hover:text-accent",
+                  })}
+                >
+                  {t("ctaButtom2")} <span aria-hidden="true">→</span>
+                </Link>
               </div>
             </div>
           </div>
